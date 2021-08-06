@@ -25,15 +25,24 @@ form.addEventListener('submit',(e) =>{
 
                 if (two.value >= 1 && two.value <= 20000) {
 
-//method call
-/*
-                    success.innerText = +one.value + +two.value;
-*/
-                        var a= +one.value/1;
-                        var c= +two.value/1;
-                        var x=(a * a) + (c  * c);
-                        var b=Math.sqrt(x);
-                        success.innerText = "( "+ a.toFixed(2) +" , "+ b.toFixed(2) +" , "+c.toFixed(2) +" )";
+                        var a= one.value;
+                        var c= two.value;
+                        var i,j;
+                        var finalvalue = "";
+                        for (i = a; i <= c; i++){
+                            for (j = i; j <= c; j++) {
+                                 var b = Math.sqrt(i * i + j * j);
+                                if (Number.isInteger(b) && b <= c) {
+                                    finalvalue += "( " + i + " , " + j + " , " + b+ " )" +" ";
+                                }
+                            }
+                        }
+                    if(finalvalue == "" || finalvalue == null){
+                        success.innerHTML = "There is no Triples between "+a+" and "+c;
+                    }else{
+                        success.innerHTML = finalvalue;
+                    }
+
 
                 } else {
                     errorElement4.innerText = ' The Value of "c" should be under(1-20,000)';
@@ -42,38 +51,6 @@ form.addEventListener('submit',(e) =>{
                 errorElement3.innerText = ' The Value of "a" should be under(1-20,000)';
             }
 
-            /* if(one.value >= 1 && one.value <= 20000) {
-                 /!* success.innerText = 'success';*!/
-             } else{
-                 errorElement3.innerText = ' The Value of "a" should be under(1-20,000)';
-             }
-         }
-
-
-         if(two.value === ''|| two.value == null) {
-             errorElement2.innerText = 'Second Value Is Requried';
-         }else {
-             if(two.value >= 1 && two.value <= 20000) {
-                 /!*success.innerText = 'success';*!/
-             }else{
-                 errorElement4.innerText = ' The Value of "c" should be under(1-20,000)';
-             }
-         }
-
-         /!*if(one.value >= 1 && one.value <= 20000) {
-            /!* success.innerText = 'success';*!/
-         }
-
-         else{
-             errorElement3.innerText = ' The Value of "a" should be under(1-20,000)';
-         }
-
-         if(two.value >= 1 && two.value <= 20000) {
-             /!*success.innerText = 'success';*!/
-         }
-         else{
-             errorElement4.innerText = ' The Value of "c" should be under(1-20,000)';
-         }*!/*/
         }
     }
 })
